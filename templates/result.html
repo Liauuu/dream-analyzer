@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Celestial Epistle</title>
+
+  <!-- Google Fonts (Antique vibe) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- 공통 CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- 결과 페이지 전용 스타일 -->
+  <style>
+    .result-wrap {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      background: url("{{ url_for('static', filename='images/result.png') }}") center/cover no-repeat fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 24px 14px 40px;
+    }
+
+    .result-wrap::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,.45) 0%,
+        rgba(0,0,0,.35) 40%,
+        rgba(0,0,0,.25) 65%,
+        rgba(0,0,0,.15) 100%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 제목 */
+    .result-title {
+      z-index: 1;
+      margin-top: 8px;
+      margin-bottom: 10px;
+      font-family: "IM Fell English SC", serif;
+      font-weight: 700;
+      font-size: clamp(30px, 7vw, 46px);
+      color: #f5f0dc;
+      letter-spacing: 1px;
+      text-shadow:
+        0 0 2px rgba(0,0,0,0.8),
+        0 0 6px rgba(0,0,0,0.6),
+        1px 1px 0 rgba(255,255,255,0.2);
+    }
+
+    /* 부제 */
+    .result-sub {
+      z-index: 1;
+      margin-bottom: 18px;
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(20px, 5vw, 28px);
+      color: #e0d8b0;
+      text-shadow:
+        0 0 2px rgba(0,0,0,.8),
+        0 0 8px rgba(0,0,0,.7);
+    }
+
+    /* 결과 카드 */
+    .result-card {
+      z-index: 1;
+      width: min(720px, 94vw);
+      background: rgba(8,18,36,.55);
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 14px;
+      padding: 20px 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      color: #f3eedc;
+      line-height: 1.6;
+      font-family: "IM Fell English", serif;
+      font-size: clamp(16px, 4vw, 20px);
+      font-weight: 500;
+      text-align: left;
+      text-shadow:
+        0 0 2px rgba(0,0,0,.9),
+        0 0 10px rgba(0,0,0,.7);
+      max-height: 70vh;
+      overflow: auto;
+    }
+    .result-card pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin: 0;
+    }
+
+    /* 돌아가기 버튼 */
+    .back-link {
+      z-index: 1;
+      margin-top: 18px;
+      display: inline-block;
+      font-family: "IM Fell English", serif;
+      font-size: 16px;
+      color: #f5f0dc;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(0,0,0,.25));
+      box-shadow: 0 6px 18px rgba(0,0,0,.28);
+      text-shadow: 0 0 2px rgba(0,0,0,.9);
+    }
+  </style>
+</head>
+<body>
+  <div class="result-wrap">
+    <h1 class="result-title">THE CELESTIAL EPISTLE</h1>
+    <div class="result-sub">For thy amusement and gentle rumination only</div>
+
+    <div class="result-card">
+      <pre>{{ result }}</pre>
+    </div>
+
+    <a class="back-link" href="/">↩ Return whence thou camest</a>
+  </div>
+</body>
+</html>

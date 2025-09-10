@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antique Dream Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="sky">
+    <img src="{{ url_for('static', filename='images/background.jpg') }}" class="background" alt="stars">
+    <div class="stars"></div>
+    <img src="{{ url_for('static', filename='images/moon.jpg') }}" class="moon" alt="moon">
+    <img src="{{ url_for('static', filename='images/cloud2.jpg') }}" class="cloud cloud1" alt="cloud">
+    <img src="{{ url_for('static', filename='images/cloud3.jpg') }}" class="cloud cloud2" alt="cloud">
+    <img src="{{ url_for('static', filename='images/cloud4.jpg') }}" class="cloud cloud3" alt="cloud">
+    <img src="{{ url_for('static', filename='images/cloud1.jpg') }}" class="cloud cloud4" alt="cloud">
+    <img src="{{ url_for('static', filename='images/machine.jpg') }}" class="machine" alt="machine">
+</div>
+
+<header>
+    <h1>Dream Analyzer</h1>
+    <p class="note">Pray, regard this as mere diversion</p>
+</header>
+
+<section class="quote">
+    <blockquote>
+        <em>"Dreams are the royal road to the unconscious." – Sigmund Freud</em>
+    </blockquote>
+</section>
+
+<main>
+    <form action="/result" method="post" class="dream-form">
+        <label for="dream">Inscribe thy dream (elements and tale):</label>
+        <textarea id="dream" name="dream" rows="5" required></textarea>
+
+        <fieldset>
+            <legend>The ambience of thy vision:</legend>
+            <label><input type="checkbox" name="mood" value="Melancholic"> Melancholic</label>
+            <label><input type="checkbox" name="mood" value="Whimsical"> Whimsical</label>
+            <label><input type="checkbox" name="mood" value="Foreboding"> Foreboding</label>
+            <label><input type="checkbox" name="mood" value="Serene"> Serene</label>
+            <label><input type="checkbox" name="mood" value="Chaotic"> Chaotic</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Thy sentiment whilst dreaming:</legend>
+            <label><input type="checkbox" name="emotion" value="Joyous"> Joyous</label>
+            <label><input type="checkbox" name="emotion" value="Fearful"> Fearful</label>
+            <label><input type="checkbox" name="emotion" value="Bewildered"> Bewildered</label>
+            <label><input type="checkbox" name="emotion" value="Calm"> Calm</label>
+            <label><input type="checkbox" name="emotion" value="Melancholy"> Melancholy</label>
+        </fieldset>
+
+        <button type="submit">Submit for whimsical augury</button>
+    </form>
+</main>
+</body>
+</html>

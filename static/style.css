@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: #000;
+    color: #fdf6e3;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* 배경 */
+.sky {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2;
+}
+.background {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9) sepia(0.2); /* 살짝 어둡고 빈티지톤 */
+    z-index: -2;
+}
+
+/* 별 반짝임 (모기장 느낌 제거 → 드문드문 반짝임만) */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+.stars::before, .stars::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 150px 150px; /* 점 간격 넓힘 */
+    animation: twinkle 4s infinite alternate;
+    opacity: 0.6;
+}
+.stars::after {
+    background-size: 200px 200px; /* 다른 레이어 별 */
+    animation-duration: 6s;
+    opacity: 0.4;
+}
+@keyframes twinkle {
+    from { opacity: 0.2; }
+    to { opacity: 0.8; }
+}
+
+/* 달 */
+.moon {
+    position: absolute;
+    width: 160px;
+    top: 30px;
+    right: 20px;
+    animation: float 8s ease-in-out infinite;
+}
+
+/* 구름 */
+.cloud {
+    position: absolute;
+    width: 120px;
+    opacity: 0.8;
+}
+.cloud2 { top: 150px; right: 5%; animation: drift 65s linear infinite reverse; }
+.cloud3 { top: 200px; left: 20%; animation: drift 75s linear infinite; }
+.cloud4 { top: 250px; right: 20%; animation: drift 85s linear infinite reverse; }
+
+/* 기계 */
+.machine {
+    position: absolute;
+    width: 140px;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0.9;
+    animation: float 10s ease-in-out infinite;
+}
+
+/* 애니메이션 */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+@keyframes drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(200px); }
+}
+
+/* 헤더 */
+header h1 {
+    font-size: 1.8em;
+    margin-top: 20px;
+}
+header .note {
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* 인용문 */
+.quote {
+    margin: 20px;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1.2em;
+    color: #f0e6d2;
+}
+
+/* 폼 */
+main {
+    margin: 0 auto;
+    margin-top: 200px;
+    max-width: 95%;
+}
+.dream-form {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+textarea {
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    font-family: serif;
+    background: #fdf6e3;
+}
+
+/* 체크박스 */
+fieldset {
+    border: none;
+    margin: 10px 0;
+    text-align: left;
+}
+fieldset legend {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+label {
+    display: block;
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2);
+}
+
+/* 버튼 */
+button {
+    padding: 10px;
+    background: #8b6f47;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+}
+button:hover {
+    background: #a5835a;
+}
