@@ -16,7 +16,7 @@ Built with **Flask**, **HTML/CSS/JS**, and sprinkled with a whimsical, old-world
 ---
 
 ## 📷 Preview
-![Preview](images/preview.jpg)
+![Preview]([images/preview.jpg](https://raw.githubusercontent.com/Liauuu/drean-analyzer/main/images/preview.jpg))
 
 ---
 
