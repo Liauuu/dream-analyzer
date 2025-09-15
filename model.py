@@ -20,7 +20,7 @@ def extract_keywords(dream_text, max_keywords=6):
 def analyze_dream(dream_text, mood, emotion):
     keywords = extract_keywords(dream_text)
 
-    # mood, emotion도 포함
+   
     extra_keywords = []
     if mood: extra_keywords.extend(m.lower() for m in mood)
     if emotion: extra_keywords.extend(e.lower() for e in emotion)
@@ -31,7 +31,7 @@ def analyze_dream(dream_text, mood, emotion):
                 "I have carefully read the dream you described.\n"
                 "But no clear symbols were found.\n")
 
-    # 🔥 다양한 패턴 (현실+미래+심리+무의식 톤)
+   
     psyche_patterns = [
         "You may be quietly holding onto {kw}, even without realizing it.",
         "At the core of your thoughts lies the influence of {kw}.",
@@ -71,7 +71,7 @@ def analyze_dream(dream_text, mood, emotion):
         "In the silent depth, {kw} remains alive within you."
     ]
 
-    # 랜덤하게 선택
+
     psyche_lines = [random.choice(psyche_patterns).format(kw=kw) for kw in keywords]
     future_lines = [random.choice(future_patterns).format(kw=kw) for kw in keywords]
     unconscious_lines = [random.choice(unconscious_patterns).format(kw=kw) for kw in keywords]
