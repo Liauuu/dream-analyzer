@@ -2,16 +2,12 @@ import os
 import requests
 
 def scrape_gutenberg_txt(url, output_path):
-    """
-    Project Gutenberg 텍스트 파일(.txt) 다운로드 및 저장
-    - 본문 마커가 있으면 본문만 추출
-    - 없으면 전체 텍스트 저장
-    """
+   
     response = requests.get(url)
     response.raise_for_status()
     text = response.text
 
-    # Gutenberg 본문 추출 시도
+ 
     start_marker = "*** START OF"
     end_marker = "*** END OF"
 
@@ -22,9 +18,9 @@ def scrape_gutenberg_txt(url, output_path):
         clean_text = text[start_idx:end_idx]
     else:
         print(f"[!] Markers not found in {url}, saving full text instead.")
-        clean_text = text  # 전체 저장
+        clean_text = text  
 
-    # 저장
+ 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(clean_text)
 
@@ -32,10 +28,10 @@ def scrape_gutenberg_txt(url, output_path):
 
 
 if __name__ == "__main__":
-    # data 폴더 생성
+  
     os.makedirs("data", exist_ok=True)
 
-    # 꿈 해석 관련 주요 Gutenberg 텍스트
+   
     urls = {
         # Freud – The Interpretation of Dreams (Brill translation, 1913)
         "freud_interpretation_of_dreams.txt":
@@ -62,7 +58,7 @@ if __name__ == "__main__":
             "https://www.gutenberg.org/cache/epub/65367/pg65367.txt",
     }
 
-    # 다운로드 실행
+   
     for filename, link in urls.items():
         output_file = os.path.join("data", filename)
         try:
